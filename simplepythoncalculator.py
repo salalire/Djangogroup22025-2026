@@ -1,30 +1,26 @@
-print("insert first number")
-global x
-x=int(input("first number:"))
-global y 
-print("insert first number")
-y=int("second number:)
+def add(number1,number2):
+      return number1+number2
 
+def multiply(number1,number2):
+      return number1*number2
 
+def divide(number1,number2):
+      if number2==0:
+            print("Division by zero is illegal")
+            return
+      return number1/number2
+
+def subtract(number1,number2):
+      return number1-number2
+
+print("Enter two numbers")
+x=int(input("First Number: "))
+y=int(input("Second Number: "))
+print("The addition result is ",add(x,y))
+print("The multplication result is ",multiply(x,y))
+print("The division result is ",divide(x,y))
+print("The subtraction result is ",subtract(x,y))
       
-def add(num1,num2):
-  return num1+num2 
-
-def multply(num1,num2):
-  return num1*num2 
-
-def divide(num1,num2):
-  return num1/num2
-  
-def subtract(num1,num2):
-  return num1-num2 
-
-def modulo(num1,num2):
-  return num1%num2 
-
-
-
-  
-
-
-
+      
+      
+      
