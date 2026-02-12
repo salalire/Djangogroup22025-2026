@@ -8,4 +8,5 @@ urlpatterns = [
    path("author-with-book/",views.author_with_title),
    path("not-free-books/",views.not_free_book),
    path("higher-author/",views.authors_with_hgher_price),
+   path("top5/",views.top5_authors),
 ]

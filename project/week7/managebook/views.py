@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Book,Author
 from django.http import HttpResponse
+from django.db.models import Sum
 
 def book_after_2010(request):
     books = Book.objects.filter(published_year__gt=2010)
@@ -15,7 +16,7 @@ def book_with_title_python(request):
     books=Book.objects.filter(title__icontains="python")
     result = ""
     for b in books:
-        result += f"Title: {b.title},<br>"
+        result += f"Title: {b.title}<br>"
 
     return HttpResponse(result)
 
@@ -54,5 +55,12 @@ def authors_with_hgher_price(request):
         for book in author.books.all():
             result+=f"Book title: {book.title}  Price: {book.price}<br>"
         result+="<br>"    
+    return HttpResponse(result)
+
+def top5_authors(request):
+    top5_authors=Author.objects.annotate(total_revenue=Sum("books__price")).order_by("-total_revenue")[:5]
+    result=""
+    for author in top5_authors:
+        result+=f"Author: {author.name}  Total Revenue: {author.total_revenue}<br>"
     return HttpResponse(result)
     
