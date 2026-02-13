@@ -42,7 +42,7 @@ def main():
             manager.delete_task(task_id)
 
         elif choice == "5":
-            print("Goodbye 👋")
+            print("GoodTime")
             break
 
         else:
