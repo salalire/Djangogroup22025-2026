@@ -12,14 +12,19 @@ class TodoManager:
     def load_tasks(self):
         if os.path.exists(self.filename):
             with open(self.filename, "r") as file:
-                data = json.load(file)
-                self.tasks = [Task.from_dict(item) for item in data]
+                try:
+                    data = json.load(file)
+                    self.tasks = [ToDoTask.from_dictionary(item) for item in data]
+                except json.JSONDecodeError:
+                    self.tasks = []
         else:
             self.tasks = []
 
+
     def save_tasks(self):
         with open(self.filename, "w") as file:
-            json.dump([task.to_dict() for task in self.tasks], file, indent=4)
+            json.dump([task.to_dictionary() for task in self.tasks], file, indent=4)
+
 
     
    
