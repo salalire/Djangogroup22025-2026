@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>  
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-</head> 
+    <title>Managers Office</title>
+</head>
 <body>
-        <h2> Hello {{user.username}}! Welcome to the Member Lounge</h2>
-        <p>Only members can see this page.</p>
-        <form method="post" action="{% url 'logout' %}">
+    <h1>Managers Office</h1>
+    <p>Welcome, {{ user.username }}!</p>
+    <form method="post" action="{% url 'logout' %}">
     {% csrf_token %}
     <button type="submit">Logout</button>
 </form>
-
 </body>
 </html>
